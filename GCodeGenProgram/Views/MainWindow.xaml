@@ -1,0 +1,27 @@
+﻿<Window x:Class="GCodeGenProgram.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GCodeGenProgram.Views"
+        mc:Ignorable="d"
+        Title="CNC Code Generator" Height="450" Width="800">
+    
+        <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="282*"></ColumnDefinition>
+            <ColumnDefinition Width="563*"/>
+        </Grid.ColumnDefinitions>
+
+        <Button Grid.Column="1" Width="100" Height="25" Content="Change Size" Margin="0 0 350 0" Command="{Binding NavigateToChangeSizesCommand}"></Button>
+        <Button Grid.Column="1" Width="100" Height="25" Content="Add Drill" Command="{Binding NavigateToAddDrillCommand}"></Button>
+        <Button Grid.Column="1" Width="100" Height="25" Content="Generate G-Code" Margin="350 0 0 0" Command="{Binding GenerateGCodeCommand}"></Button>
+
+        <local:DrillList Grid.Column="0" Grid.Row="1" DataContext="{Binding DrillListViewModel}"></local:DrillList>
+        <ContentControl Grid.Row="1" Grid.Column="1" Content="{Binding NavigationService.CurrentView}"/>
+    </Grid>
+</Window>
